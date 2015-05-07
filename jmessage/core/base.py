@@ -156,7 +156,7 @@ class BaseSDK(object):
         status_code = resp.status_code
         try:
             self._check_errors(resp, status_code)
-        except Exception,e:
+        except Exception, e:
             logging.error(e)
             return False
         else:

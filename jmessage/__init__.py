@@ -1,13 +1,17 @@
 #!/usr/bin/env python
-#coding: utf8
+# coding: utf8
 from core.users import Users as UserSDK
 from core.groups import Groups as GroupSDK
 from core.messages import Messages as MessageSDK
 from core.friends import Friends as FriendSDK
 
+__version__ = '0.0.1'
+VERSION = tuple(map(int,  __version__.split('.')))
+
+
 class JMessageSDK(object):
     """JMessage各个模块操作集合
-    
+
     :param appKey: string, 应用的AppKey
     :param masterSecret: string, 相应的masterSecret
     """
@@ -31,7 +35,6 @@ class JMessageSDK(object):
     @property
     def friends(self):
         return FriendSDK(self.appKey, self.masterSecret)
-
 
 
 __all__ = ['UserSDK', 'GroupSDK', 'MessageSDK', 'FriendSDK', 'JMessageSDK']

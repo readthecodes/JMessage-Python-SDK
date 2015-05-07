@@ -1,10 +1,17 @@
 #!/usr/bin/env python
 # coding: utf8
 from __future__ import absolute_import
+import logging
 
 from jmessage.core import conf
 from jmessage.core.exceptions import *
 from jmessage.httplib.httpclient import HTTPClient
+
+
+logging.basicConfig(
+    format="%(asctime)s@%(filename)s@%(lineno)s:%(message)s",
+    level=logging.DEBUG
+)
 
 
 class BaseSDK(object):
@@ -137,7 +144,7 @@ class BaseSDK(object):
         try:
             self._check_errors(resp, status_code)
         except Exception, e:
-            print e
+            logging.error(e)
 
         return resp.json_content
 
@@ -150,7 +157,7 @@ class BaseSDK(object):
         try:
             self._check_errors(resp, status_code)
         except Exception,e:
-            print e
+            logging.error(e)
             return False
         else:
             return True
